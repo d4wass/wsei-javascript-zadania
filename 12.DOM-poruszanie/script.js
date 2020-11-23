@@ -32,11 +32,11 @@ const addEvents = () => {
        let randomColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
 
        parent.style.backgroundColor = randomColor;
-       
+
        if (sibling.style.display === 'none') {
            sibling.style.display = 'block';
        } else {
-        //    parent.style.backgroundColor = "#fff";
+           parent.style.backgroundColor = "#fff";
            sibling.style.display = 'none';
        }
     }))
@@ -50,23 +50,23 @@ const liElements = document.querySelectorAll('#ex5 ul li');
 
 const onHover = (index) => {
     const divBgColor = divElements[index].style.backgroundColor
-    
+
     //first element
-    // liElements[0].style.backgroundColor = divBgColor;
+    liElements[0].style.backgroundColor = divBgColor;
     //last element
-    // liElements[liElements.length - 1].style.backgroundColor = divBgColor;
+    liElements[liElements.length - 1].style.backgroundColor = divBgColor;
 
     //evenElements
-    // const evenElements = [...liElements].filter((item, index) => ((index + 1) % 2 === 0))
-    // evenElements.forEach(item => item.style.backgroundColor = divBgColor);
+    const evenElements = [...liElements].filter((item, index) => ((index + 1) % 2 === 0))
+    evenElements.forEach(item => item.style.backgroundColor = divBgColor);
     //allElements
-    // liElements.forEach(item => item.style.backgroundColor = divBgColor);
+    liElements.forEach(item => item.style.backgroundColor = divBgColor);
     //whole list -> ul
-    //liElements[0].parentElement.style.backgroundColor = divBgColor;
+    liElements[0].parentElement.style.backgroundColor = divBgColor;
 
 }
 
-divElements.forEach((item, index) => item.addEventListener('mouseover', () => onHover(index))); 
+divElements.forEach((item, index) => item.addEventListener('mouseover', () => onHover(index)));
 
 
 //Zadanie 6

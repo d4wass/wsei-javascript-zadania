@@ -21,10 +21,10 @@ const listElement = document.querySelector('#list');
 
 //zadanie 4
 
-const showElements = (li, ul, span, className, idName) => {
-    const liElements = document.getElementsByTagName(li);
-    const ulElements = document.getElementsByTagName(ul);
-    const spanElements = document.getElementsByTagName(span);
+const showElements = (className, idName) => {
+    const liElements = document.getElementsByTagName('li');
+    const ulElements = document.getElementsByTagName('ul');
+    const spanElements = document.getElementsByTagName('span');
 
     const spanInClass = document.querySelectorAll(`.${className} span`)
     const spanInId = document.querySelectorAll(`#${idName} span`)
@@ -35,3 +35,5 @@ const showElements = (li, ul, span, className, idName) => {
     console.log(spanInClass)
     console.log(spanInId)
 }
+
+showElements("list", "spans")

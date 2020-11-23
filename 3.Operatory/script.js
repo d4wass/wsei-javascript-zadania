@@ -1,6 +1,6 @@
 // Zadanie 1
 
-let truly = true; 
+let truly = true;
 let falsy = false;
 
 console.log(truly == falsy); // false - operator porównania, porównuje wartości zmiennych bez względu na ich typ
@@ -40,6 +40,8 @@ let counter = 30;
 console.log(counter); // 30
 console.log(++counter); // 31
 console.log(--counter); // 30
+
+// Zadanie 6
 
 let number = 30;
 let anotherNumber = 20;

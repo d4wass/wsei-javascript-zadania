@@ -1,46 +1,26 @@
 //zadanie 1
 
-const person = {
-    name: 'Damian',
-    surname: 'W',
-    age: 19,
-    country: 'Poland',
-    city: 'Cracow',
+function Person(firstName, secondName, age, country, city) {
+    this.firstName = firstName;
+    this.secondName = secondName;
+    this.age = age;
+    this.country = country;
+    this.city = city;
+}
 
-    // zamiast arrow fn lepiej użyć standardowej metody tworzenia funkcji ze względu na użycie this. W arrow fn 
-    // this gubi swój kontekst
+const person = new Person("Tomasz", "Nowak", 29, "Polska", "Kraków");
+const person1 = new Person("Marsia", "Odzdzisia", 49, "Polska", "Warszawa");
 
-    showPersonInfo: function(){
-        console.log(this.name, this.surname, this.age, this.country, this.city);
-    },
-
-    showAgePerson: function () {
-        console.log(this.age);
-        this.age++
-    }
-};
-
-const person2 = {
-    name: 'Toamsz',
-    surname: 'K',
-    age: 29,
-    country: 'Poland',
-    city: 'Warsaw',
-
-    showPersonInfo: function(){
-        console.log(this.name, this.surname, this.age, this.country, this.city);
-    },
-
-    showAgePerson: function () {
-        console.log(this.age);
-        this.age++
-    }
-};
+console.log(person);
+console.log(person1);
 
 //zadanie 2
 
 person['dishes'] = [];
-person2['dishes'] = [];
+person1['dishes'] = [];
+
+console.log(person);
+console.log(person1);
 
 const showDishes = function(){
     this.dishes.forEach(item => (console.log(item)));
@@ -49,6 +29,16 @@ const showDishes = function(){
 const addDishes = function(){
     this.dishes.push(arguments);
 };
+
+person['showDishes'] = showDishes;
+person1['showDishes'] = showDishes;
+person['addDishes'] = addDishes;
+person1['addDishes'] = addDishes;
+
+person.addDishes("dish", "dish1", "dish2")
+person1.addDishes("dish", "dish1", "dish2", "dish3")
+person.showDishes();
+person1.showDishes();
 
 // zadanie 3
 
@@ -87,3 +77,46 @@ const calculator = {
 }
 
 // Zadanie 4
+
+const ladder = {
+	isOnLader: false,
+	step: 0,
+	climbLadder() {
+		this.isOnLader = true;
+	},
+	getOff() {
+		if (this.step === 0) {
+			this.isOnLader = false;
+		} else {
+			console.log('Go down to the lowest step');
+		}
+	},
+	goUp() {
+		if (this.isOnLader) {
+			this.step += 1;
+		} else {
+			console.log('Climb at your ladder.');
+		}
+	},
+	goDown() {
+		if (this.step === 0) {
+			console.log('You cannot go down.');
+			return this.getOff();
+		}
+		this.step -= 1;
+	},
+};
+
+console.log(ladder);
+ladder.goUp();
+ladder.climbLadder();
+ladder.goUp();
+ladder.goUp();
+console.log(ladder);
+ladder.getOff();
+ladder.goDown();
+ladder.goDown();
+console.log(ladder);
+ladder.goDown();
+ladder.getOff();
+ladder.goUp();

@@ -1,22 +1,24 @@
 #### Zadanie 1
 
-W konsoli stwórz dwie zmienne przechowujące liczby. Następnie za pomocą instrukcji warunkowej ```if ... else ```, wypisz w konsoli, która z nich jest większa.
+W konsoli stwórz dwie zmienne przechowujące liczby. Następnie za pomocą instrukcji warunkowej `if ... else `, wypisz w konsoli, która z nich jest większa.
 
 #### Zadanie 2
 
 W konsoli stwórz trzy zmienne przechowujące liczby. Następnie za pomocą instrukcji warunkowej **if**, **else if** i **else**
 wypisz w konsoli, która z nich jest największa.
 
-
 #### Zadanie 3
+
 W konsoli stwórz pętle, która 10 razy wypisze w konsoli tekst "Lubię JavaScript".
 
 #### Zadanie 4
-W konsoli stwórz zmienną ```result``` i przypisz do niej liczbę 0. Następnie stwórz pętle, która doda do siebie liczby od 1 do 10.
+
+W konsoli stwórz zmienną `result` i przypisz do niej liczbę 0. Następnie stwórz pętle, która doda do siebie liczby od 1 do 10.
 
 #### Zadanie 5
-W konsoli napisz program, który na podstawie wartości zmiennej np. ```var n = 5;``` wypisuje wszystkie liczby od zera do **n**.
-Przy każdej liczbie program ma napisać, czy  liczba jest parzysta czy nie. Np.:
+
+W konsoli napisz program, który na podstawie wartości zmiennej np. `var n = 5;` wypisuje wszystkie liczby od zera do **n**.
+Przy każdej liczbie program ma napisać, czy liczba jest parzysta czy nie. Np.:
 
 ```JavaScript
 0 – parzysta
@@ -27,10 +29,11 @@ Przy każdej liczbie program ma napisać, czy  liczba jest parzysta czy nie. Np.
 ```
 
 #### Zadanie 6
+
 W konsoli stwórz dwie pętle niezależne i wypisz wartości ich liczników w każdej iteracji. Wykorzystaj:
 konkatenację np.
 
-```JavaScript 
+```JavaScript
 console.log("i= " + i + ", j= " + j);
 ```
 
@@ -49,6 +52,7 @@ Przykład:
 Narysuj w konsoli:
 
 a)
+
 ```
 *
 **
@@ -58,6 +62,7 @@ a)
 ```
 
 b)
+
 ```
     *
    * *
@@ -67,15 +72,17 @@ b)
 ```
 
 c)
+
 ```
     *
    ***
   *****
  *******
-*********
+* * * * * * * * *
 ```
 
 d)
+
 ```
 *1234
 **234
@@ -91,6 +98,7 @@ d)
 ```
 
 e)
+
 ```
     *
    * *

@@ -8,7 +8,7 @@ if (firstNumber > secondNumber) {
 } else {
     console.log('secondNumber jest większa od firstNumber');
 }
-
+(firstNumber > secondNumber) ? console.log('firstNumber jest większa od secondNumber') : console.log('secondNumber jest większa od firstNumber');
 // firstNumber jest większa od secondNumber
 
 //Zadanie 2
@@ -100,48 +100,36 @@ for (let i = 0; i < 5; i++){
 }
 
 //Zadanie 8c
+let count1 = 4;
+for (let i = 1; i <= 10; i++) {
+	if (i % 2 !== 0) {
+		console.log(' '.repeat(count1) + '*'.repeat(i) + ' '.repeat(count1));
+		count1--;
+	}
+}
 //Zadanie 8d
 
-let star = '*'
-
-for (let i = 0; i < 5; i++){
-    let result = "";
-    for (let k = 5; k > i ; k--){
-        result += star;
-    }
-    console.log(result);
+let str = '*1234';
+for (j = 0; j <= 11; j++) {
+	if (j === 6) {
+		console.log('------');
+	} else if (j < 6) {
+		console.log('*'.repeat(j) + str.slice(j));
+	} else {
+		console.log('*'.repeat(12 - j) + str.slice(12 - j));
+	}
 }
 
-let star = '*'
-// let number = 4
+// zadanie 8e
 
-// for (let i = 0; i < 5; i++){
-//     let result = "";
-// 	let number = 5;
-//     for (let j = 0; j < 5 - i; j++){
-//        result += '*';
-//     }
-//     for (let k = 1; k < i + 1; k++){
-		 
-// 		 result += i-k;	
-		 
-//     }
-//     console.log(result);
-// }
-
-//;lk;lk
-
-
-for (let i=5; i > 0; i--){
-	// console.log(i);
-	let result=""
-	 // for (let j = 5; j > 5 - i; j--){
-	 // result += '*';
-	 // }
-	    for (let k = 1; k < i + 1; k++){
-		 
-		 result += k;	
-		 
-    }
-	console.log(result)
+let count2 = 4;
+for (let i = 1; i <= 6; i++) {
+	if (i <= 5) {
+		console.log(' '.repeat(count2) + '* '.repeat(i));
+		count2--;
+	} else {
+		console.log('    *');
+		console.log('    *');
+		console.log('    *');
+	}
 }

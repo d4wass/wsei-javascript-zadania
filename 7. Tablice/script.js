@@ -43,37 +43,32 @@ const smalest = Math.min.apply(null, numberArray)
 const reverseArray = numberArray.reverse()
 console.log(summary)
 
-// Bez użycia Math
-//
-// let champion = numbersTab[0];
-// numbersTab.forEach(number => {
-//     if (number > champion) {
-//         champion = number;
-//     }
-// })
+// Największa Bez użycia Math
+let max = numberArray[0];
+
+numberArray.forEach(number => {
+    if (number > champion) {
+        max = number;
+    }
+})
 
 // Najmniejsza bez użycia Math
-//
-// let min = numbersTab[0];
-// numbersTab.forEach(number => {
-//     if (number < champion) {
-//         champion = number;
-//     }
-// })
+let min = numberArray[0];
+numberArray.forEach(number => {
+    if (number < champion) {
+        min = number;
+    }
+})
 
 //Zadanie 4
 
-const summaryArray = (array) => {
-    const summary = array.reduce((a, b) => a + b);
-
-    return summary
-}
+const summaryArray = (array) => array.reduce((a, b) => a + b);
 
 //Zadanie 5
 
 const calcArray = (array) => {
     const avg = array.reduce((a, b) => a + b) / array.length;
-    
+
     for (let i = 0; i < array.length; i++){
         console.log(array[i] * avg);
     }
@@ -84,7 +79,7 @@ const calcArray = (array) => {
 const evenAvg = (array) => {
     const even = array.filter(element => element % 2 === 0);
     const summaryEven = even.reduce((a, b) => a + b);
-    
+
     return summaryEven / even.length
 }
 
@@ -96,38 +91,17 @@ const sortArray = (array) => {
 }
 
 // Zadanie 8
-// liczba z jednej tablicy dodać liczba z drugiej tablicy
 
-// function getIndexesFrom(array1, array2) {
-//     let indexArray = [];
-//     array1.forEach((e, index) => {
-//         indexArray.push(index);
-//     })
-//     array2.forEach((e, index) => {
-//         indexArray.push(index);
-//     })
-//     return indexArray;
-// }
-
-// console.log(getIndexesFrom(myNumberArray, myNumberArray2));
-// console.log('');
-
-// const arr1 = [1, 5, 8, 44, 56, 39];
-// const arr2 = [9, 0, 21, 78, 8, 4];
-// const newArr = [];
-
-// function addIndexes(arr1, arr2) {
-//     arr1.forEach((num1, i) => {
-//         newArr.push(num1 + arr2[i]);
-//     });
-//     return newArr;
-// }
-
-// console.log(addIndexes(arr1, arr2));
-
-const indexSummary = (firstArray, secondArray) => {
-    const firstIndex = firstArray.
+const getArraysIndexSummary = (array1, array2) => {
+    let sumIndex = 0;
+    [...array1, ...array2].reduce((prev, current, index) => (sumIndex += index));
+    return sumIndex;
 }
+
+const arr1 = [1, 5, 8, 44, 56, 39];
+const arr2 = [9, 0, 21, 78, 8, 4];
+
+console.log(getArraysIndexSummary(arr1, arr2))
 
 // Zadanie 9 - nie trzeba oddawać 9
 
@@ -151,12 +125,3 @@ const negativeArray = (array) => {
     return changedArray;
 }
 
-// function invert(arr){
-//     for(let i = 0; i < arr.length; i++){
-//         arr[i] = - arr[i];
-//     }
-
-//     return arr;
-// }
-
-// console.log(invert([-2,-1,0,1,2]));
