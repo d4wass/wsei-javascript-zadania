@@ -4,10 +4,10 @@ console.log(document.querySelector('#baz').nextElementSibling)
 console.log(document.querySelector('#foo').children)
 console.log(document.querySelector('#foo').parentNode)
 console.log(document.querySelector('#foo').firstElementChild)
+console.log(document.getElementById("foo").children[Math.floor(document.getElementById("foo").children.length / 2)]);
 
 const middleChild = document.querySelector('#foo').childNodes
 const lenght = Math.floor(middleChild.length/2)
-console.log(lenght)
 console.log(middleChild[lenght])
 
 //zadanie 2
@@ -50,12 +50,10 @@ const liElements = document.querySelectorAll('#ex5 ul li');
 
 const onHover = (index) => {
     const divBgColor = divElements[index].style.backgroundColor
-
     //first element
     liElements[0].style.backgroundColor = divBgColor;
     //last element
     liElements[liElements.length - 1].style.backgroundColor = divBgColor;
-
     //evenElements
     const evenElements = [...liElements].filter((item, index) => ((index + 1) % 2 === 0))
     evenElements.forEach(item => item.style.backgroundColor = divBgColor);
@@ -63,7 +61,6 @@ const onHover = (index) => {
     liElements.forEach(item => item.style.backgroundColor = divBgColor);
     //whole list -> ul
     liElements[0].parentElement.style.backgroundColor = divBgColor;
-
 }
 
 divElements.forEach((item, index) => item.addEventListener('mouseover', () => onHover(index)));
