@@ -132,7 +132,8 @@ form.addEventListener('submit', (e) => {
 //state for form
 let persons = [{ id: 1, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 },
     { id: 2, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 },
-    { id: 3, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 }]
+    { id: 3, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 }];
+const tableHeads = ['id', 'name', 'surname', 'age', 'kids', 'remove'];
 //form
 const personalForm = document.createElement('form');
 //buttons
@@ -161,20 +162,32 @@ const inputsPlaceholders = [
         type: 'number'
     }
 ];
-
 inputsPlaceholders.forEach(el => {
     const input = document.createElement('input');
     input.type = el.type;
+    input.classList = "personalForm";
     input.name = el.name;
     input.placeholder = el.placeholder;
     personalForm.appendChild(input);
 })
+//setting and styling elements
+personalForm.style.display = 'flex';
+personalForm.style.flexDirection = 'column';
+personalForm.style.width = '40%';
+submitBtn.type = 'submit';
+submitBtn.name = 'createTable';
+submitBtn.innerText = 'Utwórz'
+moreBtn.innerText = "Więcej"
+moreBtn.name = 'addPerson';
+
 // add person to state
 const addPerson = (e) => {
     e.preventDefault();
     const { currentTarget } = e;
-    const [age, kids, surname, name] = [...currentTarget.elements]
+    const [name, surname, age, kids] = [...currentTarget.elements]
     const person = new Object();
+
+    person.id = (persons.length !== 0 ? persons[persons.length - 1].id : 0) + 1
 
     if (kids.value !== 0 && surname.value !== '' && name.value !== '' && age.value !== 0){
         person.name = name.value
@@ -188,79 +201,57 @@ const addPerson = (e) => {
     personalForm.reset();
 }
 
-const createTableRow = (persons, tbody) => {
-    persons.forEach( person => {
-        const tr = document.createElement('tr');
-        const tdBtn = document.createElement('td');
-        const removeButton = document.createElement('button');
-        tdBtn.style.border = '1px solid black';
+const removePerson = (e) => {
+    console.log(e.target.id)
+    persons = persons.filter(item => item.id !== parseInt(e.target.id))
+    const parent = e.target.parentNode.parentNode
 
-        for (const [key, value] of Object.entries(person)) {
+    table = parent.parentNode.removeChild(parent)
+}
+
+const createRow = (tbody) => {
+    persons.forEach(element => {
+        const tr = document.createElement('tr')
+        const td = document.createElement('td');
+        const removeBtn = document.createElement('button');
+
+        for (const [key, value] of Object.entries(element)) {
             const td = document.createElement('td');
-            td.style.border = '1px solid black';
-            console.log(key, value)
-            console.log();
-            td.innerText = value
+            td.innerText = value;
             tr.appendChild(td);
         }
-        removeButton.innerText = 'remove';
-        removeButton.addEventListener('click', () => removePerson(e));
-        removeButton.id = person.id
 
-        tdBtn.appendChild(removeButton);
-        tr.appendChild(tdBtn)
-        tbody.appendChild(tr)
+        removeBtn.innerText = 'remove';
+        removeBtn.classList = 'remove';
+        removeBtn.id = element.id
+        td.appendChild(removeBtn);
+        tr.appendChild(td);
+        tbody.appendChild(tr);
+
+        removeBtn.addEventListener('click', e => removePerson(e))
     })
 }
 
-const createTable = (e, persons) => {
+const createTable = () => {
     const table = document.createElement('table');
-    const thead = document.createElement('thead');
     const tbody = document.createElement('tbody');
-    const trhead = document.createElement('tr');
-    const heads = ['Imię', 'Nazwisko', 'Wiek', 'Ilość dzieci', 'remove']
+    const thead = document.createElement('thead')
+    const tr = document.createElement('tr')
 
-    heads.forEach(item => {
+    tableHeads.forEach(item => {
         const th = document.createElement('th');
-        th.style.border = '1px solid black';
-
         th.innerText = item;
-        trhead.appendChild(th);
+        tr.appendChild(th);
     })
 
-    createTableRow(persons, tbody);
+    table.id = 'table';
 
-    table.id = "table"
-
-    thead.appendChild(trhead)
+    thead.appendChild(tr);
     table.appendChild(thead);
-    table.appendChild(tbody);
-
-    return table;
+    table.appendChild(tbody)
+    document.body.appendChild(table);
+    createRow(tbody);
 }
-
-const removePerson = (e) => {
-    const element = document.getElementById('table');
-    persons = persons.filter(item => item.id != e.target.id);
-
-    if (persons.length === 0) {
-        element.parentNode.removeChild(element);
-    }
-    else {
-        // element.parentNode.removeChild(element);
-        document.body.appendChild(createTable(e, persons));
-    }
-}
-
-personalForm.style.display = 'flex';
-personalForm.style.flexDirection = 'column';
-personalForm.style.width = '40%';
-
-submitBtn.type = 'submit';
-submitBtn.name = 'createTable';
-submitBtn.innerText = 'Utwórz'
-moreBtn.innerText = "Więcej"
-moreBtn.name = 'addPerson';
 
 personalForm.appendChild(moreBtn);
 personalForm.appendChild(submitBtn);
@@ -275,13 +266,75 @@ personalForm.addEventListener('click', (e) => {
 
 personalForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const elementExists = document.getElementById("table");
-    if (persons.length !== 0) {
-        const content = createTable(e, persons);
-        document.body.appendChild(content);
-    } else if (document.body.contains(elementExists)) {
-        const tbody = document.createElement('tbody');
-        const content = createTableRow(e, persons,tbody);
-        elementExists.appendChild(content)
+
+    if (persons.length !== 0 && !(document.body.contains(document.getElementById('table')))) {
+        console.log('tworzę tablicę');
+        createTable();
+    } else if (document.body.contains(document.getElementById('table'))) {
+        console.log('tablica utworzona dodaje kolejne osoby')
+        let table = document.getElementById('table')
+        document.body.removetable = createTable()
+        // table.innerHTML = '';
+        // table.innerHTML = createTable();
     }
 })
+
+// zadanie 10
+const inputs = [...document.querySelectorAll('.personalForm')].filter(input => input.type === 'text');
+
+const upperCaseFn = (e) => {
+    console.log(e.target.value.charAt(0).toUpperCase() + e.target.value.slice(1))
+}
+inputs.forEach(input => input.addEventListener('input', (e) => upperCaseFn(e)))
+
+// Zadanie 11
+
+const getNumbersFromString = (string) => {
+    const arr = [...string];
+    let result = 0
+    arr.forEach(item => {
+        if (Number(item)) {
+            result += Number(item)
+        }
+    })
+    return result
+}
+
+// Zadanie 12
+const convertAla = (string) => {
+    const div = document.createElement('div');
+    let arr = string.split(' ');
+
+    if (!string.includes('ala')) {
+        div.innerText = 'Słowo Ala nie występuje w tekście.'
+    } else {
+        arr.forEach(word => {
+            if (word.toLowerCase() === 'ala') {
+                word = 'ola'
+            }
+            div.innerText += word + " "
+        })
+    }
+
+    document.body.appendChild(div);
+}
+
+// Zadanie 13
+const stringArrays = (arr) => {
+    let result = [];
+    arr.forEach(word => {
+        result.push(word.length);
+    })
+    return result;
+}
+stringArrays(['damian', 'ala', 'a'])
+
+const summary = (arr) => (arr.reduce((a, b) => a + b, 0));
+summary(stringArrays(['damian', 'ala', 'a']))
+
+const avg = (arr) => {
+    const summary = arr.reduce((a, b) => a + b, 0)
+    return summary / arr.length;
+}
+
+avg(stringArrays(['damian', 'ala', 'a']))
