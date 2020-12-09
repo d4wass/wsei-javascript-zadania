@@ -1,22 +1,25 @@
-// Zadanie 1 i 2 i 4 - tutaj w drugim coś było innego trzeba to sprawdzić zmienić nazwę a nie wyświetlić
+// Zadanie 1
 
 const car = {
-    producent:'BMW', 
+    producent:'BMW',
     model: '330 Ci',
     hp: 180,
     rwd: true,
     fwd: false,
     doors: 3,
-    maxSpeed: '180 km/h',    
-    engine: {
-        cylinders: 4,
-        capacity: 3000
-    },
-    
-    showName: function() {
-        console.log(`${this.producent} ${this.model}`);
-    }
+    maxSpeed: '180 km/h',
+
 }
+
+// Zadanie 2
+
+car.renameCar = function (producent, model) {
+    this.producent = producent;
+    this.model = model;
+    console.log(`${this.producent} ${this.model}`);
+}
+
+//Zadanie 4
 
 for (const property in car){
     console.log(`${property}: ${car[property]}`);
@@ -33,6 +36,11 @@ for (const property in car){
     }
 
 // Zadanie 5
+
+car.engine = {
+    cylinders: 4,
+    capacity: 3000
+};
 
 for (const property in car.engine) {
     console.log(`${property}: ${car.engine[property]}`);

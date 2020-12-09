@@ -8,7 +8,7 @@ Stwórz funkcję która będzie zwracać elementy(tagi) na podstawie podstawie p
 
 #### Zadanie 3
 
-Znajdź na stronie element listy od id="list" i zapisz do odpowiedniej zmiennej. 
+Znajdź na stronie element listy od id="list" i zapisz do odpowiedniej zmiennej.
 
 #### Zadanie 4
 

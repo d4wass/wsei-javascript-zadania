@@ -23,7 +23,7 @@ let interval;
 const showElement = () => {
 	console.log(array[counter]);
 	counter++;
-	
+
 	if(counter >= array.length){
 		clearInterval(interval);
 	}

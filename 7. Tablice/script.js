@@ -43,25 +43,17 @@ const smalest = Math.min.apply(null, numberArray)
 const reverseArray = numberArray.reverse()
 console.log(summary)
 
-// Największa Bez użycia Math
-let max = numberArray[0];
-
-numberArray.forEach(number => {
-    if (number > champion) {
-        max = number;
-    }
+//Zadanie 3 - Największa Bez użycia Math
+numberArray.reduce((a,b) => {
+    return (a > b ? a : b)
 })
 
-// Najmniejsza bez użycia Math
-let min = numberArray[0];
-numberArray.forEach(number => {
-    if (number < champion) {
-        min = number;
-    }
+//Zadanie 3 - Najmniejsza bez użycia Math
+numberArray.reduce((a,b) => {
+    return (a < b ? a : b)
 })
 
 //Zadanie 4
-
 const summaryArray = (array) => array.reduce((a, b) => a + b);
 
 //Zadanie 5

@@ -1,10 +1,10 @@
 // Zadanie 1
 
-let number = 12; 
-let text = "example text"; 
-let concatenation = 2 + "dwa"; 
-let boolean = false 
-let special = null 
+let number = 12;
+let text = "example text";
+let concatenation = 2 + "dwa";
+let boolean = false;
+let special = null;
 
 console.log(number); // 12
 console.log(text); // "example text"
@@ -20,17 +20,17 @@ let sum = 0;
 
 sum = first + second;
 
-console.log(sum); // 20 - sum = 20 
+console.log(sum); // 20 - sum = 20
 
 //Zadanie 3
 
-let variable; 
+let variable;
 console.log(variable);
 
 /*
-    console will return undefined because we only declaring variable and not 
+    console will return undefined because we only declaring variable and not
     assigning a value to this variable
 
     undefined - konsola zwraca po wywołaniu zmiennej undefined
-    ponieważ zmienna została zadeklarowana lecz nie przypisano jej wartości
+    ponieważ zmienna została zadeklarowana bez inicjalizacji (nie przypisano jej wartości)
 */

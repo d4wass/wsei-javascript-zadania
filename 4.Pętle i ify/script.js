@@ -76,7 +76,6 @@ for (let i = 0; i <= 100; i++){
 
 //Zadanie 8a
 
-
 let star = '*'
 
 for (let i = 0; i < 5; i++){

@@ -3,12 +3,12 @@
 const btn = document.querySelector('#test-event');
 const input = document.querySelector('#input-test');
 
-// btn.addEventListener('click', e => console.log(e))
-// document.addEventListener('mousemove', (e) => console.log(e));
-// btn.addEventListener('mouseover', e => console.log(e));
-// document.addEventListener('keydown', e => console.log(e));
-// document.addEventListener('scroll', e => console.log(e));
-// input.addEventListener('input', e => console.log(e));
+btn.addEventListener('click', e => console.log(e))
+document.addEventListener('mousemove', (e) => console.log(e));
+btn.addEventListener('mouseover', e => console.log(e));
+document.addEventListener('keydown', e => console.log(e));
+document.addEventListener('scroll', e => console.log(e));
+input.addEventListener('input', e => console.log(e));
 
 //zadanie 2
 

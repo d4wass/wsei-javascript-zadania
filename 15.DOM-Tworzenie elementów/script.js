@@ -130,9 +130,7 @@ form.addEventListener('submit', (e) => {
 //zadanie 9
 
 //state for form
-let persons = [{ id: 1, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 },
-    { id: 2, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 },
-    { id: 3, name: 'Damian', surname: 'jestgłupi', age: 32, kids: 0 }];
+let persons = [];
 const tableHeads = ['id', 'name', 'surname', 'age', 'kids', 'remove'];
 //form
 const personalForm = document.createElement('form');
@@ -270,12 +268,13 @@ personalForm.addEventListener('submit', (e) => {
     if (persons.length !== 0 && !(document.body.contains(document.getElementById('table')))) {
         console.log('tworzę tablicę');
         createTable();
-    } else if (document.body.contains(document.getElementById('table'))) {
+    } else if (document.body.contains(document.getElementById('table')) && persons.length > 0) {
         console.log('tablica utworzona dodaje kolejne osoby')
         let table = document.getElementById('table')
-        document.body.removetable = createTable()
-        // table.innerHTML = '';
-        // table.innerHTML = createTable();
+        document.body.removeChild(table)
+        createTable();
+    } else if (document.body.contains(document.getElementById('table')) && persons.length === 0){
+        console.log('nie dodano danych')
     }
 })
 
