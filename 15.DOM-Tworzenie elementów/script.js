@@ -338,3 +338,36 @@ const avg = (arr) => {
 }
 
 avg(stringArrays(['damian', 'ala', 'a']))
+
+// Zadanie 14
+
+let defaultObj = {
+    name: '',
+    surname: '',
+    age: ''
+}
+
+const newObjValues = (arr) => {
+    const resetBtn = document.createElement('button')
+    let counter = 0;
+    resetBtn.innerText = 'reset obj';
+    for (let property in defaultObj) {
+        defaultObj[property] = arr[counter];
+        defaultObj[`${property} length`] = arr[counter].length
+        counter++;
+
+        if (defaultObj[`${property} length`] > 5) {
+            document.body.appendChild(resetBtn)
+            resetBtn.addEventListener('click', () => {
+                defaultObj = {};
+                defaultObj.name = ""
+                defaultObj.surname = ""
+                defaultObj.age = ""
+            })
+        }
+    }
+
+
+}
+
+newObjValues(['Paweł', 'Gawełs', '23']);
